@@ -7,6 +7,7 @@ import (
 	"jobqueue/delivery/graphql/mutation"
 	"jobqueue/delivery/graphql/query"
 	"jobqueue/delivery/graphql/schema"
+	_htmx "jobqueue/delivery/htmx"
 	"jobqueue/entity"
 	"jobqueue/pkg/handler"
 	"jobqueue/pkg/server"
@@ -79,6 +80,11 @@ func main() {
 		dataloader.EchoMiddelware,
 	)
 	e.Echo.GET("/graphiql", handler.GraphiQLHandler)
+
+	helloHandler := _htmx.NewHelloHandler()
+	e.Echo.GET("/jobqueue/dashboard", helloHandler.Page)
+	e.Echo.GET("/jobqueue/dashboard/message", helloHandler.Message)
+
 	e.Echo.Logger.Fatal(e.Start())
 }
 

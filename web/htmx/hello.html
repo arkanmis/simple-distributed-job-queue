@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello World — HTMX</title>
+  <script src="//unpkg.com/htmx.org@1.9.12"></script>
+  <style>
+    body { font-family: sans-serif; max-width: 600px; margin: 60px auto; padding: 0 20px; }
+    button { padding: 8px 18px; cursor: pointer; font-size: 1rem; }
+    #message { margin-top: 1rem; font-size: 1.2rem; min-height: 1.5rem; }
+  </style>
+</head>
+<body>
+  <h1>HTMX Hello World</h1>
+  <p>Press the button to fetch a greeting from the server.</p>
+
+  <button
+    hx-get="/jobqueue/dashboard/message"
+    hx-target="#message"
+    hx-swap="outerHTML"
+  >
+    Say Hello
+  </button>
+
+  <div id="message"></div>
+</body>
+</html>
